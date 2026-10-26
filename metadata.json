@@ -1,0 +1,6 @@
+{
+  "name": "TapReview Google - Soluzioni Smart NFC per Recensioni",
+  "description": "Espositori da banco e Smart Review Card NFC + QR Code per aumentare le recensioni Google della tua attività locale o studio professionale.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
