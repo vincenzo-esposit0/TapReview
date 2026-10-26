@@ -28,12 +28,12 @@ export const PRODUCTS: Product[] = [
       { id: 'nero', name: 'Nero Opaco Premium', colorHex: '#121212', badge: 'Elegante' }
     ],
     pricingTiers: [
-      { quantity: 1, pricePerUnit: 29.90, totalPrice: 29.90, discountPercentage: 0 },
-      { quantity: 3, pricePerUnit: 23.30, totalPrice: 69.90, discountPercentage: 22, isPopular: true },
-      { quantity: 5, pricePerUnit: 19.98, totalPrice: 99.90, discountPercentage: 33 }
+      { quantity: 1, pricePerUnit: 34.99, totalPrice: 34.99, discountPercentage: 22 },
+      { quantity: 3, pricePerUnit: 30.00, totalPrice: 89.99, discountPercentage: 33, isPopular: true },
+      { quantity: 5, pricePerUnit: 28.00, totalPrice: 139.99, discountPercentage: 38 }
     ],
-    basePrice: 29.90,
-    originalPrice: 39.90,
+    basePrice: 34.99,
+    originalPrice: 44.99,
     images: {
       bianco: `${import.meta.env.BASE_URL}images/hero_display_nfc_1793016159133.jpg`,
       nero: `${import.meta.env.BASE_URL}images/counter_display_white_black_1793016159574.jpg`,
@@ -70,13 +70,13 @@ export const PRODUCTS: Product[] = [
       { id: 'gold-edition', name: 'Luxury Gold Metal Finish', colorHex: '#EAB308', badge: 'Edizione Speciale' }
     ],
     pricingTiers: [
-      { quantity: 1, pricePerUnit: 19.90, totalPrice: 19.90, discountPercentage: 0 },
-      { quantity: 3, pricePerUnit: 14.96, totalPrice: 44.90, discountPercentage: 25 },
-      { quantity: 5, pricePerUnit: 11.98, totalPrice: 59.90, discountPercentage: 40, isPopular: true },
-      { quantity: 10, pricePerUnit: 9.99, totalPrice: 99.90, discountPercentage: 50 }
+      { quantity: 1, pricePerUnit: 24.99, totalPrice: 24.99, discountPercentage: 24 },
+      { quantity: 3, pricePerUnit: 21.66, totalPrice: 64.99, discountPercentage: 34 },
+      { quantity: 5, pricePerUnit: 20.00, totalPrice: 99.99, discountPercentage: 39, isPopular: true },
+      { quantity: 10, pricePerUnit: 18.00, totalPrice: 179.99, discountPercentage: 45 }
     ],
-    basePrice: 19.90,
-    originalPrice: 29.90,
+    basePrice: 24.99,
+    originalPrice: 32.99,
     images: {
       'black-matte': `${import.meta.env.BASE_URL}images/smart_review_card_1793016159251.jpg`,
       'white-clean': `${import.meta.env.BASE_URL}images/smart_review_card_1793016159251.jpg`,
@@ -102,8 +102,8 @@ export const PRODUCTS: Product[] = [
     ],
     specs: {
       'Contenuto Pack': '1 Espositore + 2 Card NFC Tascabili',
-      'Valore Singoli Articoli': '69.70€ acquistati separatamente',
-      'Risparmio Immediato': 'Oltre 20€ di sconto kit',
+      'Valore Singoli Articoli': '84,97€ acquistati separatamente',
+      'Risparmio Immediato': 'Quasi 25€ di sconto kit',
       'Configurazione': 'Unica per la stessa scheda o differenziata per punto vendita'
     },
     targetAudience: ['Ristoranti con servizio ai tavoli', 'Saloni Beauty & Spa', 'Studi Professionali con segreteria', 'Attività con venditori esterni'],
@@ -112,11 +112,11 @@ export const PRODUCTS: Product[] = [
       { id: 'kit-bianco', name: 'Kit Bianco Candido Luxe', colorHex: '#FFFFFF' }
     ],
     pricingTiers: [
-      { quantity: 1, pricePerUnit: 49.90, totalPrice: 49.90, discountPercentage: 28, isPopular: true },
-      { quantity: 2, pricePerUnit: 42.45, totalPrice: 84.90, discountPercentage: 39 }
+      { quantity: 1, pricePerUnit: 59.99, totalPrice: 59.99, discountPercentage: 29, isPopular: true },
+      { quantity: 2, pricePerUnit: 55.00, totalPrice: 109.99, discountPercentage: 35 }
     ],
-    basePrice: 49.90,
-    originalPrice: 69.70,
+    basePrice: 59.99,
+    originalPrice: 84.97,
     images: {
       'kit-nero': `${import.meta.env.BASE_URL}images/nfc_tap_smartphone_1793016159958.jpg`,
       'kit-bianco': `${import.meta.env.BASE_URL}images/nfc_tap_smartphone_1793016159958.jpg`,
@@ -126,6 +126,9 @@ export const PRODUCTS: Product[] = [
     reviewsCount: 189
   }
 ];
+
+// Lowest single-unit price, shown as "da X€" across the site
+export const STARTING_PRICE = Math.min(...PRODUCTS.map((p) => p.basePrice));
 
 export const TESTIMONIALS: Testimonial[] = [
   {

@@ -1,38 +1,56 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sans: 'Manrope', system-ui, -apple-system, sans-serif;
+  --font-display: 'Bricolage Grotesque', 'Manrope', system-ui, sans-serif;
+
+  --color-ink: #12151a;
+  --color-ink-soft: #3b414b;
+  --color-muted: #6b7280;
+  --color-paper: #faf7f2;
+  --color-sand: #f2ede4;
+  --color-line: #e7e0d4;
+  --color-star: #f5b400;
+  --color-star-soft: #fff4d1;
+  --color-brand: #1a63e8;
+  --color-success: #108a54;
+}
+
 @layer base {
+  html {
+    scroll-padding-top: 5rem;
+  }
   body {
-    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    font-family: var(--font-sans);
+    background: var(--color-paper);
+    color: var(--color-ink);
   }
   h1, h2, h3, h4, .font-display {
-    font-family: 'Outfit', 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
   }
 }
 
-@keyframes pulseGlow {
-  0%, 100% {
-    box-shadow: 0 0 15px rgba(66, 133, 244, 0.4);
-  }
-  50% {
-    box-shadow: 0 0 30px rgba(66, 133, 244, 0.8);
-  }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
-.animate-pulse-glow {
-  animation: pulseGlow 2.5s infinite ease-in-out;
+.animate-marquee {
+  animation: marquee 40s linear infinite;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
-::-webkit-scrollbar-track {
-  background: #090d16;
+
+.animate-float {
+  animation: floatY 5s ease-in-out infinite;
 }
-::-webkit-scrollbar-thumb {
-  background: #1e293b;
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee, .animate-float {
+    animation: none;
+  }
 }

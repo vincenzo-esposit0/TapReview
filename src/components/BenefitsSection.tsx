@@ -1,97 +1,94 @@
 import React from 'react';
-import { CreditCard, QrCode, Smartphone, Zap, ShieldCheck, Sparkles, TrendingUp, Layers } from 'lucide-react';
+import { X, Check, Layers, Wallet, Sparkles, ShieldCheck } from 'lucide-react';
+import { Reveal, SectionHeader } from './ui';
+
+const before = [
+  '“Ci lasci una recensione?” e il cliente se ne dimentica',
+  'Deve cercare il locale su Google Maps da solo',
+  'Biglietti di carta che finiscono nel cestino',
+  'Solo i clienti scontenti si prendono la briga di scrivere'
+];
+
+const after = [
+  'Il cliente tocca l’espositore mentre paga',
+  'Si apre subito il modulo recensione della tua scheda',
+  'Due secondi, nessuna app da scaricare',
+  'I clienti soddisfatti finalmente lasciano le loro 5 stelle'
+];
+
+const pillars = [
+  {
+    icon: <Layers className="w-5 h-5" />,
+    title: 'NFC + QR Code',
+    description: 'Funziona con il 100% degli smartphone iPhone e Android. Se l’NFC è spento, basta inquadrare il QR.'
+  },
+  {
+    icon: <Wallet className="w-5 h-5" />,
+    title: 'Zero abbonamenti',
+    description: 'Paghi l’hardware una sola volta. Nessun canone, nessun costo nascosto, utilizzi illimitati.'
+  },
+  {
+    icon: <Sparkles className="w-5 h-5" />,
+    title: 'Pronto all’uso',
+    description: 'Ci dici il nome della tua attività, noi programmiamo chip e QR. Lo apri ed è già funzionante.'
+  },
+  {
+    icon: <ShieldCheck className="w-5 h-5" />,
+    title: 'Fatto per durare',
+    description: 'Plexiglass rigido e PVC impermeabile, igienizzabili con alcol. Oltre 100.000 letture garantite.'
+  }
+];
 
 export const BenefitsSection: React.FC = () => {
-  const benefits = [
-    {
-      icon: <Zap className="w-6 h-6 text-yellow-400" />,
-      title: 'Zero Abbonamenti o Canoni',
-      description: 'Nessun costo ricorrente né canoni mensili hidden. Acquisti il dispositivo hardware una sola volta ed è tuo per sempre con utilizzi illimitati.',
-      badge: 'Acquisto Una Tantum'
-    },
-    {
-      icon: <Layers className="w-6 h-6 text-blue-400" />,
-      title: 'Doppia Tecnologia NFC + QR Code',
-      description: 'Compatibilità totale al 100% con tutti i modelli di smartphone iOS e Android. NFC istantaneo per il "Tap" e QR Code per scansione rapida.',
-      badge: '100% Compatibile'
-    },
-    {
-      icon: <Sparkles className="w-6 h-6 text-indigo-400" />,
-      title: 'Pronto all\'Uso Senza Stress',
-      description: 'Inserisci il nome della tua attività o il link della scheda Google Business: lo programmiamo noi gratuitamente prima di spedire!',
-      badge: 'Setup Gratuito'
-    },
-    {
-      icon: <ShieldCheck className="w-6 h-6 text-emerald-400" />,
-      title: 'Materiali Ultra Resistenti',
-      description: 'Plexiglass acrilico rigido e PVC ad altissima resistenza. Lavabile, igienizzabile con alcol da cassa e resistente ai graffi o all\'usura quotidiana.',
-      badge: 'Qualità Premium'
-    },
-    {
-      icon: <TrendingUp className="w-6 h-6 text-red-400" />,
-      title: '+300% Recensioni su Google Maps',
-      description: 'Abbatte la barriera della pigrizia: i clienti soddisfatti lasciano 5 stelle in 5 secondi mentre pagano il conto o salutano.',
-      badge: 'Crescita Garantita'
-    },
-    {
-      icon: <CreditCard className="w-6 h-6 text-yellow-400" />,
-      title: 'Versatilità da Banco e Tascabile',
-      description: 'Scegli la versione da banco per la cassa e i tavoli, o la Smart Review Card formato carta di credito per consulenti e tecnici in mobilità.',
-      badge: 'Da Banco & Tascabile'
-    }
-  ];
-
   return (
-    <section className="py-16 sm:py-24 bg-slate-900/60 relative border-b border-slate-800/60">
+    <section className="py-20 sm:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-semibold text-blue-400">
-            <span>PERCHÉ SCEGLIERE TAPREVIEW</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-display">
-            Il modo più semplice ed efficace per moltiplicare le recensioni a 5 Stelle
-          </h2>
-          <p className="text-slate-300 text-base sm:text-lg">
-            Sostituisci i vecchi e inefficaci biglietti di carta con una soluzione tecnologica elegante, duratura e immediata.
-          </p>
+        <SectionHeader
+          eyebrow="Il problema"
+          title={<>I clienti soddisfatti non recensiscono. Non perché non vogliano: è scomodo.</>}
+          description="TapReview elimina ogni passaggio tra “mi è piaciuto” e “5 stelle pubblicate”."
+        />
+
+        <div className="grid md:grid-cols-2 gap-5 mt-14">
+          <Reveal className="rounded-3xl bg-white border border-line p-7 sm:p-9">
+            <div className="text-sm font-bold uppercase tracking-[0.14em] text-muted mb-6">Senza TapReview</div>
+            <ul className="space-y-4">
+              {before.map((item) => (
+                <li key={item} className="flex items-start gap-3 text-ink-soft">
+                  <span className="mt-0.5 w-6 h-6 rounded-full bg-red-50 text-red-500 flex items-center justify-center shrink-0">
+                    <X className="w-3.5 h-3.5" strokeWidth={3} />
+                  </span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+
+          <Reveal delay={0.1} className="rounded-3xl bg-ink text-white p-7 sm:p-9 relative overflow-hidden">
+            <div className="absolute -top-20 -right-20 w-64 h-64 rounded-full bg-star/20 blur-3xl" />
+            <div className="relative text-sm font-bold uppercase tracking-[0.14em] text-star mb-6">Con TapReview</div>
+            <ul className="relative space-y-4">
+              {after.map((item) => (
+                <li key={item} className="flex items-start gap-3 text-white/90">
+                  <span className="mt-0.5 w-6 h-6 rounded-full bg-star text-ink flex items-center justify-center shrink-0">
+                    <Check className="w-3.5 h-3.5" strokeWidth={3} />
+                  </span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </Reveal>
         </div>
 
-        {/* Benefits Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-12">
-          {benefits.map((benefit, idx) => (
-            <div
-              key={idx}
-              className="bg-slate-950 border border-slate-800 hover:border-slate-700/80 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 group flex flex-col justify-between"
-            >
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <div className="p-3 rounded-xl bg-slate-900 border border-slate-800 group-hover:scale-110 transition-transform">
-                    {benefit.icon}
-                  </div>
-                  <span className="text-[11px] font-bold text-slate-400 bg-slate-900 px-2.5 py-1 rounded-full border border-slate-800">
-                    {benefit.badge}
-                  </span>
-                </div>
-
-                <h3 className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors">
-                  {benefit.title}
-                </h3>
-
-                <p className="text-sm text-slate-300 leading-relaxed">
-                  {benefit.description}
-                </p>
-              </div>
-
-              <div className="pt-4 border-t border-slate-900/80 mt-4 flex items-center text-xs text-slate-500 gap-2">
-                <Smartphone className="w-3.5 h-3.5 text-blue-500" />
-                <span>Compatibile con iOS e Android</span>
-              </div>
-            </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-5">
+          {pillars.map((p, i) => (
+            <Reveal key={p.title} delay={i * 0.06} className="rounded-3xl bg-sand/70 p-6">
+              <div className="w-11 h-11 rounded-2xl bg-white text-ink flex items-center justify-center shadow-sm mb-5">{p.icon}</div>
+              <h3 className="text-lg font-bold text-ink mb-2">{p.title}</h3>
+              <p className="text-[15px] text-ink-soft leading-relaxed">{p.description}</p>
+            </Reveal>
           ))}
         </div>
-
       </div>
     </section>
   );

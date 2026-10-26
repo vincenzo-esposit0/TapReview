@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Cpu, ShieldCheck, Layers, Sparkles, CheckCircle2, Wrench, Radio, Flame, Droplets, Sun } from 'lucide-react';
+import { ShieldCheck, Radio, Droplets, Sun } from 'lucide-react';
+import { Reveal, SectionHeader } from './ui';
 
 export const ProductAnatomy: React.FC = () => {
   const [activeProduct, setActiveProduct] = useState<'espositore' | 'card' | 'kit'>('espositore');
@@ -93,13 +94,13 @@ export const ProductAnatomy: React.FC = () => {
         },
         {
           num: '04',
-          name: 'Pakaging Elegante & Guida all\'Uso',
+          name: 'Packaging Elegante & Guida all\'Uso',
           desc: 'Incluso nella confezione speciale rigida con consigli strategici per massimizzare il tasso di risposta dei clienti.'
         }
       ],
       specs: [
         { label: 'Contenuto', val: '1 Espositore A6 + 2 Smart Card Tascabili' },
-        { label: 'Sconto Bundle', val: 'Risparmio del 28% rispetto all\'acquisto singolo' },
+        { label: 'Sconto Bundle', val: 'Risparmio del 29% rispetto all\'acquisto singolo' },
         { label: 'Configurazione', val: 'Gratuita e pronta all\'uso' },
         { label: 'Garanzia', val: '30 Giorni Soddisfatti o Rimborsati' }
       ]
@@ -108,133 +109,86 @@ export const ProductAnatomy: React.FC = () => {
 
   const current = anatomyDetails[activeProduct];
 
+  const tabs: { id: keyof typeof anatomyDetails; label: string }[] = [
+    { id: 'espositore', label: 'Espositore' },
+    { id: 'card', label: 'Smart Card' },
+    { id: 'kit', label: 'Kit Business' }
+  ];
+
   return (
-    <section id="come-fatti" className="py-16 sm:py-24 bg-slate-900/90 relative border-b border-slate-800/60">
+    <section id="come-fatti" className="py-20 sm:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-semibold text-blue-400">
-            <Wrench className="w-3.5 h-3.5" />
-            <span>INGEGNERIA & MATERIALI PREMIUM</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-display">
-            Come Sono Fatti i Nostri Prodotti Promozionali
-          </h2>
-          <p className="text-slate-300 text-base sm:text-lg">
-            Esplora nei dettagli l'anatomia, la tecnologia dei chip NFC e i materiali di alta qualità utilizzati per ciascuna delle 3 tipologie di prodotto.
-          </p>
+        <SectionHeader
+          eyebrow="Qualità costruttiva"
+          title="Materiali premium, pensati per anni di utilizzo."
+          description="Niente plastica economica o adesivi che si staccano: ecco cosa c’è dentro ogni dispositivo."
+        />
 
-          {/* Product Selector Buttons */}
-          <div className="flex flex-wrap items-center justify-center gap-2 pt-4">
-            <button
-              onClick={() => setActiveProduct('espositore')}
-              className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-2 ${
-                activeProduct === 'espositore'
-                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30'
-                  : 'bg-slate-950 border border-slate-800 text-slate-400 hover:text-white'
-              }`}
-            >
-              <span>1. Espositore da Banco</span>
-            </button>
-
-            <button
-              onClick={() => setActiveProduct('card')}
-              className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-2 ${
-                activeProduct === 'card'
-                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30'
-                  : 'bg-slate-950 border border-slate-800 text-slate-400 hover:text-white'
-              }`}
-            >
-              <span>2. Smart Review Card</span>
-            </button>
-
-            <button
-              onClick={() => setActiveProduct('kit')}
-              className={`px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold transition-all flex items-center gap-2 ${
-                activeProduct === 'kit'
-                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/30'
-                  : 'bg-slate-950 border border-slate-800 text-slate-400 hover:text-white'
-              }`}
-            >
-              <span>3. Kit Completo Business</span>
-            </button>
+        <div className="flex justify-center mt-10">
+          <div className="inline-flex p-1.5 rounded-full bg-white border border-line" role="tablist">
+            {tabs.map((t) => (
+              <button
+                key={t.id}
+                role="tab"
+                aria-selected={activeProduct === t.id}
+                onClick={() => setActiveProduct(t.id)}
+                className={`px-4 sm:px-6 py-2.5 rounded-full text-sm font-bold transition-colors ${
+                  activeProduct === t.id ? 'bg-ink text-white' : 'text-ink-soft hover:text-ink'
+                }`}
+              >
+                {t.label}
+              </button>
+            ))}
           </div>
         </div>
 
-        {/* Detailed Breakdown Card */}
-        <div className="mt-12 bg-slate-950 border border-slate-800 rounded-3xl p-6 sm:p-10 shadow-2xl grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          
-          {/* Visual Column */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="relative rounded-2xl overflow-hidden border border-slate-800 bg-slate-900 aspect-[4/3] group shadow-2xl">
-              <img
-                src={current.image}
-                alt={current.title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute top-3 left-3 bg-slate-950/80 backdrop-blur-md px-3 py-1 rounded-full border border-slate-800 text-[11px] font-bold text-blue-400 flex items-center gap-1.5">
-                <Radio className="w-3.5 h-3.5 animate-pulse" />
-                <span>NTAG215 13.56 MHz</span>
-              </div>
+        <Reveal className="mt-10 grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+          <div className="lg:col-span-5 space-y-4">
+            <div className="relative rounded-[28px] overflow-hidden aspect-[4/3] bg-sand">
+              <img key={current.image} src={current.image} alt={current.title} className="w-full h-full object-cover" loading="lazy" />
+              <span className="absolute top-4 left-4 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur text-xs font-bold text-ink">
+                <Radio className="w-3.5 h-3.5" /> Chip NFC NTAG215 · 13,56 MHz
+              </span>
             </div>
-
-            {/* Specs Grid */}
-            <div className="grid grid-cols-2 gap-3 pt-2">
-              {current.specs.map((spec, i) => (
-                <div key={i} className="p-3 bg-slate-900 border border-slate-800 rounded-xl space-y-0.5">
-                  <span className="text-[10px] text-slate-400 uppercase font-mono block">{spec.label}</span>
-                  <span className="text-xs font-bold text-white">{spec.val}</span>
+            <dl className="grid grid-cols-2 gap-3">
+              {current.specs.map((spec) => (
+                <div key={spec.label} className="rounded-2xl bg-white border border-line p-4">
+                  <dt className="text-xs font-bold uppercase tracking-[0.12em] text-muted">{spec.label}</dt>
+                  <dd className="mt-1 text-sm font-semibold text-ink">{spec.val}</dd>
                 </div>
               ))}
-            </div>
+            </dl>
           </div>
 
-          {/* Layer Breakdown Column */}
-          <div className="lg:col-span-7 space-y-6">
-            <div className="space-y-1">
-              <span className="text-xs font-bold text-blue-400 uppercase tracking-wider">ANATOMIA & COSTRUZIONE</span>
-              <h3 className="text-2xl font-extrabold text-white font-display">{current.title}</h3>
-              <p className="text-sm text-slate-400">{current.subtitle}</p>
-            </div>
+          <div className="lg:col-span-7">
+            <h3 className="text-2xl sm:text-3xl font-bold text-ink">{current.title}</h3>
+            <p className="mt-2 text-ink-soft">{current.subtitle}</p>
 
-            <div className="space-y-4 pt-2">
-              {current.layers.map((layer, idx) => (
-                <div
-                  key={idx}
-                  className="p-4 rounded-2xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition-colors flex items-start gap-4"
-                >
-                  <span className="text-xs font-black text-blue-400 bg-blue-500/10 border border-blue-500/20 px-2.5 py-1 rounded-lg font-mono shrink-0">
-                    {layer.num}
-                  </span>
-                  <div className="space-y-1">
-                    <h4 className="text-sm font-bold text-white">{layer.name}</h4>
-                    <p className="text-xs text-slate-300 leading-relaxed">{layer.desc}</p>
+            <ol className="mt-8 divide-y divide-line border-y border-line">
+              {current.layers.map((layer) => (
+                <li key={layer.num} className="flex gap-5 py-5">
+                  <span className="font-display text-2xl font-bold text-star w-10 shrink-0">{layer.num}</span>
+                  <div>
+                    <h4 className="text-lg font-bold text-ink">{layer.name}</h4>
+                    <p className="mt-1 text-[15px] text-ink-soft leading-relaxed">{layer.desc}</p>
                   </div>
-                </div>
+                </li>
+              ))}
+            </ol>
+
+            <div className="mt-6 flex flex-wrap gap-2">
+              {[
+                { icon: <Droplets className="w-4 h-4" />, label: 'Impermeabile' },
+                { icon: <Sun className="w-4 h-4" />, label: 'Resistente ai raggi UV' },
+                { icon: <ShieldCheck className="w-4 h-4" />, label: 'Igienizzabile con alcol' }
+              ].map((b) => (
+                <span key={b.label} className="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-sand text-sm font-semibold text-ink">
+                  {b.icon} {b.label}
+                </span>
               ))}
             </div>
-
-            {/* Resistance Badges */}
-            <div className="pt-4 border-t border-slate-800 flex flex-wrap items-center gap-4 text-xs text-slate-400">
-              <div className="flex items-center gap-1.5">
-                <Droplets className="w-4 h-4 text-blue-400" />
-                <span>100% Impermeabile</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <Sun className="w-4 h-4 text-yellow-400" />
-                <span>Resistente ai Raggi UV</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                <span>Zero Deterioramento</span>
-              </div>
-            </div>
-
           </div>
-
-        </div>
-
+        </Reveal>
       </div>
     </section>
   );

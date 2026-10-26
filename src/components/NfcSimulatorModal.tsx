@@ -36,17 +36,17 @@ export const NfcSimulatorModal: React.FC<NfcSimulatorModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="relative w-full max-w-lg bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink/60 backdrop-blur-sm">
+      <div className="relative w-full max-w-lg bg-white rounded-[28px] shadow-2xl overflow-hidden">
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-slate-950/50">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-line">
           <div className="flex items-center gap-2">
-            <Radio className="w-5 h-5 text-blue-400 animate-pulse" />
-            <h3 className="text-lg font-bold text-white font-display">Simulatore Tap NFC Google</h3>
+            <Radio className="w-5 h-5 text-ink" />
+            <h3 className="text-lg font-bold text-ink">Simulatore Tap NFC Google</h3>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors"
+            className="p-1.5 text-ink rounded-full hover:bg-sand transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -55,23 +55,23 @@ export const NfcSimulatorModal: React.FC<NfcSimulatorModalProps> = ({
         <div className="p-6 space-y-6">
           {step === 'idle' && (
             <div className="text-center space-y-6 py-4">
-              <div className="relative mx-auto w-32 h-32 rounded-full bg-blue-600/10 border-2 border-dashed border-blue-500/40 flex items-center justify-center group cursor-pointer hover:scale-105 transition-transform" onClick={handleSimulateTap}>
-                <div className="absolute inset-0 rounded-full bg-blue-500/10 animate-ping" />
-                <Smartphone className="w-14 h-14 text-blue-400" />
+              <div className="relative mx-auto w-32 h-32 rounded-full bg-star-soft border-2 border-dashed border-star flex items-center justify-center group cursor-pointer hover:scale-105 transition-transform" onClick={handleSimulateTap}>
+                <div className="absolute inset-0 rounded-full bg-star/20 animate-ping" />
+                <Smartphone className="w-14 h-14 text-ink" />
               </div>
 
               <div className="space-y-2">
-                <h4 className="text-xl font-bold text-white">Prova la magia del "Tap" in tempo reale</h4>
-                <p className="text-sm text-slate-400 max-w-sm mx-auto">
-                  Clicca sul pulsante in basso per simulare l'avvicinamento di uno smartphone all'espositore NFC per <strong className="text-slate-200">{businessName}</strong>.
+                <h4 className="text-xl font-bold text-ink">Prova la magia del "Tap" in tempo reale</h4>
+                <p className="text-sm text-ink-soft max-w-sm mx-auto">
+                  Clicca sul pulsante in basso per simulare l'avvicinamento di uno smartphone all'espositore NFC per <strong className="text-ink">{businessName}</strong>.
                 </p>
               </div>
 
               <button
                 onClick={handleSimulateTap}
-                className="w-full py-3.5 px-6 rounded-xl font-bold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 transition-all shadow-lg shadow-blue-600/30 flex items-center justify-center gap-3 text-base"
+                className="w-full py-3.5 px-6 rounded-full font-bold text-white bg-ink hover:bg-ink-soft transition-colors flex items-center justify-center gap-3 text-base"
               >
-                <Sparkles className="w-5 h-5 text-yellow-300" />
+                <Sparkles className="w-5 h-5 text-star" />
                 <span>Simula "Tap iPhone / Android"</span>
               </button>
             </div>
@@ -79,30 +79,30 @@ export const NfcSimulatorModal: React.FC<NfcSimulatorModalProps> = ({
 
           {step === 'tapping' && (
             <div className="text-center py-10 space-y-4">
-              <div className="w-16 h-16 mx-auto rounded-full bg-blue-600/20 border border-blue-500/50 flex items-center justify-center animate-spin">
-                <Radio className="w-8 h-8 text-blue-400" />
+              <div className="w-16 h-16 mx-auto rounded-full bg-star-soft flex items-center justify-center animate-spin">
+                <Radio className="w-8 h-8 text-ink" />
               </div>
-              <h4 className="text-lg font-bold text-white">Lettura Chip NFC in corso...</h4>
-              <p className="text-xs text-blue-400 font-mono">Sensore NFC rilevato (NTAG215) → Apertura link Google Reviews</p>
+              <h4 className="text-lg font-bold text-ink">Lettura Chip NFC in corso...</h4>
+              <p className="text-xs text-muted font-mono">Sensore NFC rilevato (NTAG215) → Apertura link Google Reviews</p>
             </div>
           )}
 
           {step === 'popup' && (
-            <div className="space-y-5 animate-in zoom-in-95 duration-200">
+            <div className="space-y-5">
               {/* Google Review Box Mockup */}
-              <div className="bg-slate-950 border border-slate-800 rounded-xl p-5 space-y-4 shadow-inner">
-                <div className="flex items-center gap-3 pb-3 border-b border-slate-800">
-                  <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center font-bold text-slate-900 text-xl shadow">
+              <div className="bg-paper border border-line rounded-2xl p-5 space-y-4">
+                <div className="flex items-center gap-3 pb-3 border-b border-line">
+                  <div className="w-10 h-10 rounded-full bg-white border border-line flex items-center justify-center font-bold text-ink text-xl">
                     G
                   </div>
                   <div>
-                    <h5 className="text-sm font-bold text-white leading-tight">{businessName}</h5>
-                    <p className="text-xs text-slate-400">Google Business Profile · Valuta la tua esperienza</p>
+                    <h5 className="text-sm font-bold text-ink leading-tight">{businessName}</h5>
+                    <p className="text-xs text-muted">Google Business Profile · Valuta la tua esperienza</p>
                   </div>
                 </div>
 
                 <div className="space-y-2 text-center pt-1">
-                  <span className="text-xs text-slate-400 uppercase tracking-wider font-medium">Seleziona le stelle</span>
+                  <span className="text-xs text-muted uppercase tracking-wider font-medium">Seleziona le stelle</span>
                   <div className="flex items-center justify-center gap-1.5">
                     {[1, 2, 3, 4, 5].map((star) => (
                       <button
@@ -114,8 +114,8 @@ export const NfcSimulatorModal: React.FC<NfcSimulatorModalProps> = ({
                         <Star
                           className={`w-8 h-8 ${
                             star <= selectedRating
-                              ? 'text-yellow-400 fill-yellow-400 drop-shadow-[0_0_8px_rgba(250,204,21,0.5)]'
-                              : 'text-slate-700'
+                              ? 'text-star fill-star'
+                              : 'text-line'
                           }`}
                         />
                       </button>
@@ -124,12 +124,12 @@ export const NfcSimulatorModal: React.FC<NfcSimulatorModalProps> = ({
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-xs font-medium text-slate-300">Scrivi un breve commento:</label>
+                  <label className="text-xs font-medium text-ink-soft">Scrivi un breve commento:</label>
                   <textarea
                     rows={3}
                     value={reviewComment}
                     onChange={(e) => setReviewComment(e.target.value)}
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg p-2.5 text-xs text-slate-200 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    className="w-full bg-white border border-line rounded-lg p-2.5 text-sm text-ink focus:ring-2 focus:ring-ink/10 focus:outline-none"
                     placeholder="Condividi i dettagli della tua esperienza..."
                   />
                 </div>
@@ -137,7 +137,7 @@ export const NfcSimulatorModal: React.FC<NfcSimulatorModalProps> = ({
                 <form onSubmit={handleSubmitReview} className="pt-2">
                   <button
                     type="submit"
-                    className="w-full py-2.5 rounded-lg text-sm font-semibold text-white bg-blue-600 hover:bg-blue-500 transition-colors flex items-center justify-center gap-2 shadow-md shadow-blue-600/30"
+                    className="w-full py-2.5 rounded-full text-sm font-bold text-white bg-brand hover:brightness-110 transition flex items-center justify-center gap-2"
                   >
                     <Send className="w-4 h-4" />
                     <span>Pubblica Recensione su Google</span>
@@ -148,22 +148,22 @@ export const NfcSimulatorModal: React.FC<NfcSimulatorModalProps> = ({
           )}
 
           {step === 'submitted' && (
-            <div className="text-center space-y-5 py-6 animate-in zoom-in-95 duration-200">
-              <div className="w-16 h-16 mx-auto rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center">
-                <CheckCircle className="w-10 h-10 text-emerald-400" />
+            <div className="text-center space-y-5 py-6">
+              <div className="w-16 h-16 mx-auto rounded-full bg-success/10 flex items-center justify-center">
+                <CheckCircle className="w-10 h-10 text-success" />
               </div>
               <div className="space-y-1">
-                <h4 className="text-xl font-bold text-white">Recensione Pubblicata! 🎉</h4>
-                <p className="text-sm text-slate-300">
+                <h4 className="text-xl font-bold text-ink">Recensione Pubblicata! 🎉</h4>
+                <p className="text-sm text-ink-soft">
                   Ecco come i tuoi clienti lasceranno recensioni a 5 stelle a raffica, senza stress o dimenticanze.
                 </p>
               </div>
-              <div className="p-3 bg-emerald-950/40 border border-emerald-800/60 rounded-xl text-xs text-emerald-300 font-mono">
+              <div className="p-3 bg-success/5 rounded-xl text-xs text-success font-mono">
                 ⚡ Tempo impiegato stimato: <strong>4.2 secondi</strong>
               </div>
               <button
                 onClick={handleReset}
-                className="inline-flex items-center gap-2 text-xs text-slate-400 hover:text-white underline pt-2"
+                className="inline-flex items-center gap-2 text-xs text-muted hover:text-ink underline pt-2"
               >
                 <RefreshCw className="w-3.5 h-3.5" />
                 <span>Riprova la simulazione</span>

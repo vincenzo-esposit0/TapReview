@@ -1,81 +1,83 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { BenefitsSection } from './components/BenefitsSection';
 import { ProductCatalog } from './components/ProductCatalog';
 import { ProductAnatomy } from './components/ProductAnatomy';
 import { HowItWorks } from './components/HowItWorks';
+import { RoiCalculator } from './components/RoiCalculator';
 import { Testimonials } from './components/Testimonials';
 import { FaqSection } from './components/FaqSection';
+import { Guarantee, FinalCta } from './components/FinalCta';
 import { QuoteModal } from './components/QuoteModal';
+import { StickyMobileCta } from './components/StickyMobileCta';
 import { Footer } from './components/Footer';
+import { PRODUCTS } from './data/products';
 
 export default function App() {
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState<boolean>(false);
-  const [selectedProductTitle, setSelectedProductTitle] = useState<string>('Espositore da Banco Smart NFC + QR Code');
-  const [selectedBusinessName, setSelectedBusinessName] = useState<string>('');
+  const [selectedProductTitle, setSelectedProductTitle] = useState<string>(PRODUCTS[0].title);
+  const [selectedQuantity, setSelectedQuantity] = useState<string | undefined>(undefined);
 
-  const handleOpenQuoteModal = (productTitle?: string, businessName?: string) => {
+  const handleOpenQuoteModal = (productTitle?: string, quantity?: string) => {
     if (productTitle) setSelectedProductTitle(productTitle);
-    if (businessName) setSelectedBusinessName(businessName);
+    setSelectedQuantity(quantity);
     setIsQuoteModalOpen(true);
   };
 
-  const scrollToSection = (sectionId: string) => {
-    const el = document.getElementById(sectionId);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  const closeQuoteModal = useCallback(() => setIsQuoteModalOpen(false), []);
+
+  const scrollToProducts = () => {
+    document.getElementById('prodotti')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans">
-      
-      {/* Top Bar Navigation */}
-      <Navbar
-        onOpenQuoteModal={() => handleOpenQuoteModal()}
-      />
+    <div className="min-h-screen flex flex-col">
+      <Navbar onOpenQuoteModal={() => handleOpenQuoteModal()} />
 
-      {/* Main Content Sections */}
       <main className="flex-1">
-        
-        {/* Hero Section */}
-        <Hero
-          onExploreProducts={() => scrollToSection('prodotti')}
-          onOrderNow={() => handleOpenQuoteModal()}
-        />
+        {/* 1. Promise + proof above the fold */}
+        <Hero onExploreProducts={scrollToProducts} onOrderNow={() => handleOpenQuoteModal()} />
 
-        {/* Benefits Section */}
+        {/* 2. Problem / solution */}
         <BenefitsSection />
 
-        {/* 3 Promoted Product Types Showcase */}
-        <ProductCatalog
-          onOpenQuoteModalForProduct={(title) => handleOpenQuoteModal(title)}
-        />
-
-        {/* Come Sono Fatti (Product Anatomy & Fabrication Details) */}
-        <ProductAnatomy />
-
-        {/* How it Works */}
+        {/* 3. How it works */}
         <HowItWorks />
 
-        {/* Social Proof & Testimonials */}
+        {/* 4. Offer with visible prices */}
+        <ProductCatalog onOpenQuoteModalForProduct={handleOpenQuoteModal} />
+
+        {/* 5. Value calculator */}
+        <RoiCalculator onExploreProducts={scrollToProducts} />
+
+        {/* 6. Social proof */}
         <Testimonials />
 
-        {/* FAQ Section */}
+        {/* 7. Build quality */}
+        <ProductAnatomy />
+
+        {/* 8. Risk reversal */}
+        <Guarantee />
+
+        {/* 9. Objections */}
         <FaqSection />
 
+        <div className="pt-20 sm:pt-28">
+          <FinalCta onExploreProducts={scrollToProducts} onOpenQuoteModal={() => handleOpenQuoteModal()} />
+        </div>
       </main>
 
-      {/* Quote / Info Request Modal (Vetrina Lead Capture) */}
       <QuoteModal
         isOpen={isQuoteModalOpen}
-        onClose={() => setIsQuoteModalOpen(false)}
+        onClose={closeQuoteModal}
         preselectedProductTitle={selectedProductTitle}
-        preselectedBusinessName={selectedBusinessName}
+        preselectedQuantity={selectedQuantity}
       />
 
-      {/* Footer */}
-      <Footer />
+      <StickyMobileCta onExploreProducts={scrollToProducts} />
 
+      <Footer />
     </div>
   );
 }
