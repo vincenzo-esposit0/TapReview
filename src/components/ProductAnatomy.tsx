@@ -8,7 +8,7 @@ export const ProductAnatomy: React.FC = () => {
     espositore: {
       title: 'Espositore da Banco Smart NFC + QR Code',
       subtitle: 'Come è realizzato il display rigido per cassa e tavoli',
-      image: '/src/assets/images/product_anatomy_nfc_1793021942326.jpg',
+      image: `${import.meta.env.BASE_URL}images/product_anatomy_nfc_1793021942326.jpg`,
       layers: [
         {
           num: '01',
@@ -41,7 +41,7 @@ export const ProductAnatomy: React.FC = () => {
     card: {
       title: 'Smart Review Card Tascabile NFC',
       subtitle: 'Come è fatta la carta di credito smart tascabile',
-      image: '/src/assets/images/nfc_card_anatomy_1793021942368.jpg',
+      image: `${import.meta.env.BASE_URL}images/nfc_card_anatomy_1793021942368.jpg`,
       layers: [
         {
           num: '01',
@@ -74,7 +74,7 @@ export const ProductAnatomy: React.FC = () => {
     kit: {
       title: 'Kit Completo Smart Business (Bundle)',
       subtitle: 'La combinazione perfetta per cassa e mobilità',
-      image: '/src/assets/images/counter_display_white_black_1793016159574.jpg',
+      image: `${import.meta.env.BASE_URL}images/counter_display_white_black_1793016159574.jpg`,
       layers: [
         {
           num: '01',

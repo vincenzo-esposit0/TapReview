@@ -35,9 +35,9 @@ export const PRODUCTS: Product[] = [
     basePrice: 29.90,
     originalPrice: 39.90,
     images: {
-      bianco: '/src/assets/images/hero_display_nfc_1793016159133.jpg',
-      nero: '/src/assets/images/counter_display_white_black_1793016159574.jpg',
-      default: '/src/assets/images/counter_display_white_black_1793016159574.jpg'
+      bianco: `${import.meta.env.BASE_URL}images/hero_display_nfc_1793016159133.jpg`,
+      nero: `${import.meta.env.BASE_URL}images/counter_display_white_black_1793016159574.jpg`,
+      default: `${import.meta.env.BASE_URL}images/counter_display_white_black_1793016159574.jpg`
     },
     rating: 4.9,
     reviewsCount: 342
@@ -78,10 +78,10 @@ export const PRODUCTS: Product[] = [
     basePrice: 19.90,
     originalPrice: 29.90,
     images: {
-      'black-matte': '/src/assets/images/smart_review_card_1793016159251.jpg',
-      'white-clean': '/src/assets/images/smart_review_card_1793016159251.jpg',
-      'gold-edition': '/src/assets/images/smart_review_card_1793016159251.jpg',
-      default: '/src/assets/images/smart_review_card_1793016159251.jpg'
+      'black-matte': `${import.meta.env.BASE_URL}images/smart_review_card_1793016159251.jpg`,
+      'white-clean': `${import.meta.env.BASE_URL}images/smart_review_card_1793016159251.jpg`,
+      'gold-edition': `${import.meta.env.BASE_URL}images/smart_review_card_1793016159251.jpg`,
+      default: `${import.meta.env.BASE_URL}images/smart_review_card_1793016159251.jpg`
     },
     rating: 4.95,
     reviewsCount: 218
@@ -118,9 +118,9 @@ export const PRODUCTS: Product[] = [
     basePrice: 49.90,
     originalPrice: 69.70,
     images: {
-      'kit-nero': '/src/assets/images/nfc_tap_smartphone_1793016159958.jpg',
-      'kit-bianco': '/src/assets/images/nfc_tap_smartphone_1793016159958.jpg',
-      default: '/src/assets/images/nfc_tap_smartphone_1793016159958.jpg'
+      'kit-nero': `${import.meta.env.BASE_URL}images/nfc_tap_smartphone_1793016159958.jpg`,
+      'kit-bianco': `${import.meta.env.BASE_URL}images/nfc_tap_smartphone_1793016159958.jpg`,
+      default: `${import.meta.env.BASE_URL}images/nfc_tap_smartphone_1793016159958.jpg`
     },
     rating: 5.0,
     reviewsCount: 189

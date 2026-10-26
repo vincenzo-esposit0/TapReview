@@ -112,7 +112,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreProducts, onOrderNow }) => 
               {/* Product Visual Container */}
               <div className="relative rounded-xl overflow-hidden aspect-[4/3] bg-slate-900">
                 <img
-                  src="/src/assets/images/hero_display_nfc_1793016159133.jpg"
+                  src={`${import.meta.env.BASE_URL}images/hero_display_nfc_1793016159133.jpg`}
                   alt="Espositore Smart NFC Google Reviews"
                   className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
                 />
